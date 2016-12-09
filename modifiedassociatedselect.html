@@ -8,7 +8,7 @@
 	
 
 <form name="classic">
-<select name="countries" size="4" onChange="updatecities(this.selectedIndex)" style="width: 150px">
+<select name="categories" size="8" onChange="updateproductmodels(this.selectedIndex)" style="width: 250px">
 <option selected>Select A Product Category</option>
 <option value="1">CLEAR FLOAT</option>
 <option value="2">CLEAR LAMINATED</option>
@@ -19,30 +19,33 @@
 <!-- Original code -->
 <!-- <select name="cities" size="4" style="width: 150px" onClick="alert(this.options[this.options.selectedIndex].value)">
 </select> -->
-<select name="cities" size="4" style="width: 150px" >
+<select name="productmodels" size="8" style="width: 250px" >
 </select>
 
 </form>
  
 <script type="text/javascript">
  
-var countrieslist=document.classic.countries
-var citieslist=document.classic.cities
+var categorieslist=document.classic.categories
+
+/*object of the second select */
+var productmodelslist=document.classic.productmodels
 
 
+/*Put all product models here*/
+var productmodels=new Array()
+productmodels[0]=""
+productmodels[1]=["2.00mm CLEAR FLOAT|CF2", "3.00mm CLEAR FLOAT|CF3", "4.00mm CLEAR FLOAT|CF4", "5.00mm CLEAR FLOAT|CF5", "6.00mm CLEAR FLOAT|CF6","8.00mm CLEAR FLOAT|CF8","10.00mm CLEAR FLOAT|CF10","12.00mm CLEAR FLOAT|CF12","15.00mm CLEAR FLOAT|CF15","19.00mm CLEAR FLOAT|CF19"]
+productmodels[2]=["6.38mm CLEAR LAMINATED|CL638"]
+productmodels[3]=["6.76mm ACOUSTIC CLEAR LAMINATED|ACL676", "10.76mm ACOUSTIC CLEAR LAMINATED|ACL1076", "12.76mm ACOUSTIC CLEAR LAMINATED|ACL1276"]
+productmodels[4]=["6.38mm BRONZE LAMINATED|BL638","12.38mm BRONZE LAMINATED|BL1238"]
  
-var cities=new Array()
-cities[0]=""
-cities[1]=["2.00mm CLEAR FLOAT|CF2", "3.00mm CLEAR FLOAT|CF3", "4.00mm CLEAR FLOAT|CF4", "5.00mm CLEAR FLOAT|CF5", "6.00mm CLEAR FLOAT|CF6","8.00mm CLEAR FLOAT|CF8","10.00mm CLEAR FLOAT|CF10","12.00mm CLEAR FLOAT|CF12","15.00mm CLEAR FLOAT|CF15","19.00mm CLEAR FLOAT|CF19"]
-cities[2]=["6.38mm CLEAR LAMINATED|CL638"]
-cities[3]=["6.76mm ACOUSTIC CLEAR LAMINATED|ACL676", "10.76mm ACOUSTIC CLEAR LAMINATED|ACL1076", "12.76mm ACOUSTIC CLEAR LAMINATED|ACL1276"]
-cities[4]=["6.38mm BRONZE LAMINATED|BL638","12.38mm BRONZE LAMINATED|BL1238"]
- 
-function updatecities(selectedcitygroup){
-    citieslist.options.length=0
-    if (selectedcitygroup>0){
-        for (i=0; i<cities[selectedcitygroup].length; i++)
-            citieslist.options[citieslist.options.length]=new Option(cities[selectedcitygroup][i].split("|")[0], cities[selectedcitygroup][i].split("|")[1])
+function updateproductmodels(selectedcategoryindex){
+    productmodelslist.options.length=0
+    if (selectedcategoryindex>0){
+        for (i=0; i<productmodels[selectedcategoryindex].length; i++)
+        	/*  During the process of this for loop, productmodelslist.options.length autoincreases by 1 every loop  */
+            productmodelslist.options[productmodelslist.options.length]=new Option(productmodels[selectedcategoryindex][i].split("|")[0], productmodels[selectedcategoryindex][i].split("|")[1])
     }
 }
  
